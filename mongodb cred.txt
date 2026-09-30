@@ -1,0 +1,27 @@
+# Copy to .env.local (Next.js convention -- NOT .env) before running.
+# Never commit the real .env.local file.
+
+# MongoDB Atlas free tier is the easiest path (no local install) --
+# https://www.mongodb.com/cloud/atlas/register, create a free M0 cluster,
+# "Connect" -> "Drivers" -> copy the connection string here.
+# Local alternative: mongodb://127.0.0.1:27017/quantumops (needs MongoDB
+# Community Server installed, or `docker run -p 27017:27017 mongo`).
+MONGODB_URI=mongodb:mongodb+srv://voltarax:<db_password>@cluster0.nu6fgku.mongodb.net/?appName=Cluster0
+
+# Any long random string -- generate one with:
+#   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+JWT_SECRET=0401623f293e7990d3f8712a6a7d6ba6489507047a0f85f3ddbf168dbfa1ec08
+
+# The existing Python service from the earlier scaffold -- where the real
+# IBM Quantum / Qiskit integration lives. Leave as-is if you're running it
+# locally on the default port; the dashboard falls back to mock data in
+# Node if this isn't reachable.
+PYTHON_TELEMETRY_URL=http://localhost:8000/telemetry/fleet
+
+# Optional -- powers the "Ask QuantumOps" chat widget (site-wide) and the
+# dashboard's "Ask about this fleet" panel. Get a key at
+# https://platform.openai.com/api-keys. Without it, both fall back to a
+# small rule-based FAQ responder -- the widget still works, just less smart.
+# NEVER put this in a plaintext file committed to the repo (do this instead
+# of what the uploaded reference project did with its key.txt).
+OPENAI_API_KEY=
